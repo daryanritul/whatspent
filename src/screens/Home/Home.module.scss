@@ -1,0 +1,52 @@
+
+@import '../../style/variables.scss';
+
+.home{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+.body{
+    flex : 1;
+    display: flex;
+    flex-direction: column;
+}
+.body{
+    button {
+        background: $status-danger-600;
+        padding: 8px;
+        color: $basic-white;
+        margin : 10px;
+        cursor: pointer;
+    }
+}
+.titles{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: $brand-600-main;
+}
+.overviewBox{
+    height: 70px;
+ 
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+}
+
+.exp{
+    flex: 1;
+    overflow: auto;
+    
+}
+
+
+.pages{
+    width: 100%;
+    background: green;
+}
+.actions {
+    position: absolute;
+    right: 10px;
+   
+}

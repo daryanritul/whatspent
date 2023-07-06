@@ -1,0 +1,90 @@
+@import '../../style/variables.scss';
+
+.app{
+    width: 100vw;
+    height: 100vh;
+    background-color: $natural-100;
+    background-image: radial-gradient($brand-600-main, 1.85px, #e5e5f7 1.85px);
+    background-size: 37px 37px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth{
+    position: relative;
+    width: 550px;
+    height: 550px;
+    background: $basic-white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+}
+.logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+.logo img {
+    height: 100px;
+}
+.switch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+.switch > * {
+    padding: 10px;
+    background: $brand-600-main;
+    color: $basic-white;
+    width: 180px;
+    text-align: center;
+    border-bottom : 1px solid $brand-600-main;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    font-size: 18px;
+}
+.switch > *.active{
+    background: $basic-white;
+    color: $brand-600-main;
+}
+.subtitle{
+    text-align: center;
+    font-size: 14px;
+    padding:5px;
+}
+.auth form{
+  
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    width: 60%;
+    label {
+        padding: 3px;
+        font-weight: bold;
+    }
+    input {
+        padding: 10px;
+        border : 1px solid $brand-600-main;
+        border-radius: 5px;
+    }
+}
+.auth button { 
+    position: absolute;
+bottom : 20px;
+    padding: 10px;
+    width: 60%;
+    background: $brand-600-main;
+    color: $basic-white;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,112 @@
+/*text style*/ 
+@mixin desktop-headline-5xl {
+    font-size: 48px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin desktop-headline-4xl {
+    font-size: 36px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin desktop-headline-3xl {
+    font-size: 30px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin desktop-headline-2xl {
+    font-size: 24px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin desktop-headline-xl {
+    font-size: 20px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin mobile-headline-4xl {
+    font-size: 36px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin mobile-headline-3xl {
+    font-size: 30px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin mobile-headline-2xl {
+    font-size: 24px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin mobile-headline-xl {
+    font-size: 20px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin body-text-lg-font-normal {
+    font-size: 18px;
+    font-family: Nunito;
+    font-weight: 400;
+     }
+  @mixin body-text-lg-font-semibold {
+    font-size: 18px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin body-text-lg-font-semibold_capital {
+    font-size: 18px;
+    font-family: Nunito;
+    font-weight: 600;
+       text-transform: uppercase;
+  }
+  @mixin body-text-base-font-normal {
+    font-size: 16px;
+    font-family: Nunito;
+    font-weight: 400;
+     }
+  @mixin body-text-base-font-semibold {
+    font-size: 16px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin body-text-base-font-semibold_capital {
+    font-size: 16px;
+    font-family: Nunito;
+    font-weight: 600;
+       text-transform: uppercase;
+  }
+  @mixin body-text-sm-font-semibold_capital {
+    font-size: 14px;
+    font-family: Nunito;
+    font-weight: 600;
+       text-transform: uppercase;
+  }
+  @mixin body-text-sm-font-semibold {
+    font-size: 14px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin body-text-sm-font-normal {
+    font-size: 14px;
+    font-family: Nunito;
+    font-weight: 400;
+     }
+  @mixin body-text-xs-font-normal {
+    font-size: 12px;
+    font-family: Nunito;
+    font-weight: 400;
+     }
+  @mixin body-text-xs-font-semibold {
+    font-size: 12px;
+    font-family: Nunito;
+    font-weight: 600;
+     }
+  @mixin body-text-xs-font-semibold_capital {
+    font-size: 12px;
+    font-family: Nunito;
+    font-weight: 600;
+       text-transform: uppercase;
+  }
+  
+  

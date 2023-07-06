@@ -1,0 +1,19 @@
+@import '../../style/variables.scss';
+
+.expRows{
+    display: grid;
+grid-template-columns: .5fr repeat(4, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+    padding: 5px;
+    color: $brand-600-main;
+}
+.cells{
+    padding: 7px;
+    border-bottom: .5px solid $natural-300;
+}
+.head{
+   color: $natural-400;
+   font-weight: bold;
+}
