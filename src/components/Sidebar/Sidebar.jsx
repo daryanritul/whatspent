@@ -99,7 +99,7 @@ const Sidebar = ({ mobileState }) => {
                 });
               }}
             >
-              Add new List
+              Create new List
             </button>
           ) : (
             <input

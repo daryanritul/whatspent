@@ -11,10 +11,10 @@
 Whatspent is a web application built to help users manage their finances effectively. It allows users to track their expenses, income, and budgets, and provides various features to analyze and visualize their financial data.
 
 ## Screenshots
-Desktop
-
+- Desktop
  <img  width="100%" src="./src/assets/screenshots/Desktop.png">
- Mobile
+
+### Mobile
  <p align="center">
  <img  width="32%" src="./src/assets/screenshots/Mobile-2.png">
  <img  width="32%" src="./src/assets/screenshots/Mobile.png">
