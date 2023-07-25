@@ -5,20 +5,18 @@
     display: flex;
     height: 100vh;
     width: 100vw;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    position: relative;
 }
-.body{
+.homeBody{
     flex : 1;
     display: flex;
     flex-direction: column;
-}
-.body{
-    button {
-        background: $status-danger-600;
-        padding: 8px;
-        color: $basic-white;
-        margin : 10px;
-        cursor: pointer;
-    }
+    
 }
 .titles{
     padding: 10px;
@@ -26,9 +24,27 @@
     font-weight: bold;
     color: $brand-600-main;
 }
+.expTitles{
+    display: flex;
+    justify-content: space-between;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: $brand-600-main;
+        select {
+        color: $brand-600-main;
+        background-color: transparent;
+        font-size: 16px;
+        min-width: 80px;
+        max-width: 150px;
+        option { 
+            color: $brand-600-main;
+        }
+        }
+    
+}
 .overviewBox{
     height: 70px;
- 
     display: flex;
     flex-direction: row;
     padding: 0 20px;
@@ -49,4 +65,100 @@
     position: absolute;
     right: 10px;
    
+}
+.downloadBtn { 
+    display: flex;
+    &>* {
+        background: $basic-white;
+        padding: 5px 10px;
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        border-radius: 3px;
+        cursor: pointer;
+        border: 1px solid $natural-100;
+        font-size: 12px;
+        &:hover { 
+            background: $brand-50;
+            border: 1px solid $brand-600-main;
+        }
+    }
+}
+.downImg { 
+    width: 20px;
+    margin-right: 5px;
+}
+.emptyList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 70px;
+    & img {
+        width: 100px;
+        opacity: .7;
+    }
+    & p {
+        font-size: 20px;
+        color: $brand-500;
+    }
+}
+.mobileNav{
+    display: none;
+    width: 100%;
+    border-top: 1px solid $natural-300;
+    height: 60px;
+}
+.mobileItem { 
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    img { 
+        width: 30px;
+        margin-right: 8px;
+        padding:4px;
+        border-radius: 5px;
+    }
+    p { 
+        font-size: 14px;
+    }
+    &:hover { 
+        background: $brand-600-main;
+        color: $basic-white;
+        img { 
+            background: $basic-white;
+        }
+    }
+}
+@media (max-width: 480px){
+    .home { 
+        height: 100dvh;
+    }
+    .homeBody.open{
+        display: flex;
+    }
+    .homeBody.close{
+        display: none;
+        overflow: hidden;
+    }
+    .overviewBox{
+        flex-direction: column;
+        height: auto;
+    }
+    .expTitles { 
+        align-items: center;
+    }
+    .expTitles ,.titles{ 
+        font-size: 16px;
+    }
+    .mobileNav { 
+        display: flex;
+    }
 }

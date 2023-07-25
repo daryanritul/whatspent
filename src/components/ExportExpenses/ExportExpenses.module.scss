@@ -1,0 +1,47 @@
+@import '../../style/variables.scss';
+.downloadBtn { 
+    display: flex;
+}
+.exportBtn{
+    position: relative;
+    background: $basic-white;
+    padding: 5px 10px;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid $natural-100;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: normal;
+    &:hover { 
+        background: $brand-50;
+        border: 1px solid $brand-600-main;
+    }
+}
+.downImg { 
+    width: 20px;
+    margin-right: 5px;
+}
+.upload{
+    top: 0px;
+    left: 0px;  
+    position: absolute;
+    width: 150px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.upload::file-selector-button {
+    display: none;
+  }
+  @media (max-width: 480px){
+    .exportBtn { 
+        padding: 5px 10px;
+        margin: 5px;
+    }
+  }

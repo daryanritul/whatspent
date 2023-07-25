@@ -11,6 +11,9 @@
     justify-content: center;
     align-items: center;
     height: 9%;
+    img { 
+        width: 60%;
+    }
 }
   .title {
     color: $brand-600-main;
@@ -30,6 +33,7 @@
     overflow-y: auto;
   }
   .workitem {
+    position: relative;
     transition: ease-in-out 0.2s;
     padding: 1rem;
     cursor: pointer;
@@ -58,6 +62,20 @@
     background: $brand-600-main;
     color: $basic-white;
   }
+  .deleteBtn {
+    display: none;
+    position: absolute; 
+    right : 5px;
+    width: 30px;
+    padding: 5px;
+    border-radius: 3px;
+    &:hover { 
+        background: $basic-white;
+    }
+  }
+  .workitem:hover .deleteBtn { 
+    display: block;
+  }
   .input {
     padding: 0 1rem;
   }
@@ -77,76 +95,87 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    background: rgba(255, 255, 255, 0.61);
+    background: rgba(0, 0, 0, 0.61);
+    // padding: 50px;
     top: 0px;
     width: 100vw;
     height: 100vh;
     z-index: 99;
   }
-  .confirm span {
-    display: flex;
-    width: 30rem;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
-  }
-  .confirm button {
-    padding: 1rem;
-    border: none;
-    background: #1b98f5;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
+  .confirmBox{
+    background: $basic-white;
+    padding: 30px;
     border-radius: 5px;
-    transition: ease-in 0.3s;
+    width: 60%;
+    p { 
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    button { 
+        width: 150px;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        transition: all ease-in-out 250ms;
+    }
+    span { 
+            display: flex;
+            justify-content: end;
+            :first-child { 
+                background: $basic-white;
+                &:hover { 
+                    background: $natural-200;
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                }
+            }
+            :last-child { 
+                background: $status-danger-600;
+                color:$basic-white;
+                &:hover { 
+                    color:$status-danger-600;
+                    background: $status-danger-50;
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                }
+            }
+    }
+    
   }
-  .confirm button:first-child {
-    background: tomato;
-  }
-  .confirm p {
-    font-weight: bold;
-    font-size: 1.4rem;
-  }
-  .confirm button:hover {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  }
-  @media only screen and (max-width: 600px) {
-    .sidebar {
-      position: absolute;
-      display: flex;
-      z-index: 9;
-      height: 50px;
-      bottom: 0px;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+
+
+@media screen and (max-width: 480px){
+    .sidebar.open{
+        display: block;  
     }
-    .logo {
-      display: none;
+    .sidebar.close{
+        display: none;
     }
-    .title {
-      display: flex;
-      height: 90%;
-      width: 30%;
+    .sidebar{
+        position: absolute;
+     
+        width: 100%;
+        z-index: 99;
+        height: calc(100dvh  - 60px);
+        border: 1px solid $natural-300;
     }
-    .worklist {
-      display: none;
+    .logo { 
+        img { 
+            height: 50px;
+        }
     }
-    .activeModal {
-      /* display: none; */
-      display: block;
-      position: fixed;
-      top: 0px;
-      width: 100%;
-      z-index: 9;
-      height: calc(100% - 50px);
-      border-radius: 0px;
+    .deleteBtn { 
+        display: block;
     }
-    .buttonBox {
-      display: flex;
-      height: 90%;
-      justify-content: center;
-      align-items: center;
-      width: 70%;
-    }
+     .confirm { 
+        z-index: 999;
+        height: 100dvh;
+     }
+     .confirmBox { 
+        width: 85%;
+   
+        padding: 10px;
+     }
   }

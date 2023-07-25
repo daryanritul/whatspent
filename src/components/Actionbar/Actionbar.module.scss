@@ -6,32 +6,44 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    padding-bottom: 5px;
 }
 .titles{
-    padding: 10px;
-    font-size: 18px;
+    padding-top: 5px;
+    font-size: 16px;
     font-weight: bold;
     color: $brand-600-main;
+}
+.addTitle { 
+    padding-top: 10px;
+    padding-left: 10px;
+    color: $brand-600-main;
+    font-weight: 600;
+    width:100%;
+    text-align: left;
+    font-size: 16px;
 }
 .inputBox{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
     padding: 5px 10px;
     color: $brand-600-main;
+    position: relative;
     label {
-        padding: 3px;
+        padding: 0px;
+        font-size: 14px;
     }
     input {
         padding: 10px;
-        border : 1px solid $brand-500;
-        border-radius: 5px;
+        border : .5px solid $brand-500;
+        border-radius: 3px;
     }
     select {
         padding: 10px;
-        border : 1px solid $brand-600-main;
-        border-radius: 5px;
+        border : .5px solid $brand-600-main;
+        border-radius: 3px;
     }
     ul {
         list-style: none;
@@ -46,13 +58,86 @@
         }
     }
 }
-.actionBar button { 
-    width: 90%;
-    bottom : 20px;
-    padding: 10px;
+.actionBtn {
+    position: absolute;
+    bottom: 0px;
+    width: 100%; 
+    height: 50px;
     background: $brand-600-main;
     color: $basic-white;
-    margin-top: 20px;
-    border-radius: 5px;
     cursor: pointer;
+}
+.labelOption{
+    display: flex;
+    & > * { 
+        width: 100%;
+        margin: 0 5px;
+    }
+    
+}
+
+.profile{
+    width: 100%;
+    color: $brand-600-main;
+    background-color: $natural-100;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .5px solid $natural-300;
+    padding: 20px;
+    img { 
+        width: 35px;
+        border-radius: 3px;
+    }
+    p {
+        padding: 0 10px;
+    }
+    span {
+        display: flex;
+        align-items: center;
+    }
+    .signout{
+        cursor: pointer;
+        &:hover { 
+            background: $brand-100;
+        }
+    }
+}
+select#labelSelect{
+    border : .5px solid $brand-600-main;
+}
+.mobileBoxInput{
+    width: 100%;
+}
+@media (max-width: 480px){
+    .actionBar.close{
+        display: none;
+    }
+    .actionBar.open{
+        display: flex;
+    }
+    .actionBar { 
+        position: absolute;
+        width: 100%;
+        z-index: 999;
+        height: calc(100dvh  - 60px);
+        background: $natural-100;
+    }
+    .mobileBoxInput{
+        display: flex;
+        width: 100%;
+    }
+    .inputBox { 
+        width: 50%;
+    }
+    .labelInput{
+        width: 100%;
+    }
+    #dateBox{
+        width: 100%;
+        input { 
+            width: 100%;
+        }
+    }
 }

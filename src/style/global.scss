@@ -16,9 +16,12 @@ html {
     font-family: 'Poppins', sans-serif;
     background-color: $natural-100;
 }
+.html { 
+   
+}
 
 input,
-button {
+button , select, option{
     font-family: 'Poppins', sans-serif;
 }
 
@@ -33,25 +36,26 @@ button:focus {
 .primary{
     background: $brand-50;
     color: $brand-600-main;
-    &:hover{
-        background: $brand-400;
-        color: $basic-white;
+    // &:hover{
+    //     background: $brand-400;
+    //     color: $basic-white;
 
-    }
+    // }
 }
 .success{
     background-color: $status-success-50;
     color: $status-success-600;
-    &:hover{
-        background: $status-success-400;
-        color: $basic-white;
-    }
+    // &:hover{
+    //     background: $status-success-400;
+    //     color: $basic-white;
+    // }
 }
 .danger{
     background :$status-danger-50;
     color: $status-danger-600;
-    &:hover{
-        background:  $status-danger-400;
-        color: $basic-white;
-    }
+    // &:hover{
+    //     background:  $status-danger-400;
+    //     color: $basic-white;
+    // }
 }
+

@@ -19,14 +19,15 @@
     border-radius: 10px;
 }
 .logo {
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 15px;
+    padding: 15px;
 }
 .logo img {
-    height: 100px;
+    height: 70px;
 }
 .switch{
     display: flex;
@@ -43,7 +44,9 @@
     border-bottom : 1px solid $brand-600-main;
     cursor: pointer;
     transition: all 300ms ease-in-out;
-    font-size: 18px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 .switch > *.active{
     background: $basic-white;
@@ -54,7 +57,7 @@
     font-size: 14px;
     padding:5px;
 }
-.auth form{
+.auth .form{
   
     flex: 1;
     display: flex;
@@ -69,7 +72,7 @@
     width: 60%;
     label {
         padding: 3px;
-        font-weight: bold;
+        font-size: 14px;
     }
     input {
         padding: 10px;
@@ -79,7 +82,7 @@
 }
 .auth button { 
     position: absolute;
-bottom : 20px;
+bottom : 25px;
     padding: 10px;
     width: 60%;
     background: $brand-600-main;
@@ -87,4 +90,28 @@ bottom : 20px;
     margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media (max-width: 480px){
+    .app{
+        // align-items: end;
+     
+    }
+    .auth{
+        width: 80%;
+        height: 70%;
+        margin-bottom: 70px;
+    }
+    .switch{
+        width: 100%;
+        & > * {
+            font-size: 12px;
+        }
+    }
+    .subtitle{
+        font-size: 10px;
+    }
+    .inputBox { 
+        width: 90%;
+    }
 }

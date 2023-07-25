@@ -4,9 +4,11 @@ import sty from './Sidebar.module.scss';
 import logoLg from '../../assets/logo-full.svg';
 import { v4 } from 'uuid';
 import { context } from '../../store/store';
-import { createNewList, selectList } from '../../store/actions';
+import { createNewList, deleteList, selectList } from '../../store/actions';
+import Delete from '../../assets/delete.svg';
+import Logo from '../../assets/Logo.svg';
 
-const Sidebar = () => {
+const Sidebar = ({ mobileState }) => {
   const { state, dispatch } = useContext(context);
   const [cnfDelete, setCnfDelete] = useState(false);
   const [workspaceModal, setWorkspaceModal] = useState(false);
@@ -15,8 +17,12 @@ const Sidebar = () => {
     status: false,
   });
   const deleteSpaceHandler = () => {
-    console.log('DELETED');
+    deleteList(cnfDelete)(dispatch);
     setCnfDelete(false);
+  };
+  const deleteHandler = (event, uid) => {
+    event.stopPropagation();
+    setCnfDelete(uid);
   };
   const setWorkspaceIndex = id => {
     selectList(id)(dispatch);
@@ -25,25 +31,37 @@ const Sidebar = () => {
     createNewList({
       uid: v4(),
       name: item.value,
-      expanses: [],
+      expenses: [],
+      filters: {
+        label: '',
+        startDate: null,
+        endDate: null,
+      },
     })(dispatch);
   };
-  console.log(state);
   return (
     <>
-      {/* {cnfDelete && (
+      {cnfDelete && (
         <div className={sty.confirm}>
-          <p>Deleting a workspace delete all Todos and Progress</p>
-          <span>
-            <button onClick={() => deleteSpaceHandler()}>Confrim Delete</button>
-            <button onClick={() => setCnfDelete(false)}>Cancel Delete</button>
-          </span>
+          <div className={sty.confirmBox}>
+            <h3>Confirm the action</h3>
+            <p>Are you sure you want to delete this expense list?</p>
+            <span>
+              <button onClick={() => setCnfDelete(false)}>Cancel</button>
+              <button onClick={() => deleteSpaceHandler()}>Delete</button>
+            </span>
+          </div>
         </div>
-      )} */}
-      <div className={sty.sidebar}>
+      )}
+      <div
+        className={`${sty.sidebar} ${
+          mobileState === 'library' ? sty.open : sty.close
+        }`}
+      >
         <div className={sty.logo}>
-          <h2>WhatSpent</h2>
+          <img src={Logo} alt="" />
         </div>
+
         <p
           className={sty.title}
           onClick={() => setWorkspaceModal(!workspaceModal)}
@@ -60,6 +78,14 @@ const Sidebar = () => {
               onClick={() => setWorkspaceIndex(list.uid)}
             >
               {list.name}
+              {state.selectedList !== list.uid && list.uid !== 'abc123' && (
+                <img
+                  src={Delete}
+                  alt="img"
+                  className={sty.deleteBtn}
+                  onClick={event => deleteHandler(event, list.uid)}
+                />
+              )}
             </div>
           ))}
         </div>
