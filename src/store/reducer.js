@@ -79,7 +79,12 @@ export default (state, { type, payload }) => {
         lists: updatedListsFilters,
       };
     case ADD_EXPENSES:
-      const updatedExpenses = [...selectedList.expenses, payload];
+      const selectedList = state.lists.find(
+        list => list.uid === state.selectedList
+      );
+      const updatedExpenses = selectedList?.expenses
+        ? [...selectedList.expenses, payload]
+        : [payload];
       const updatedLists = state.lists.map(list =>
         list.uid === state.selectedList
           ? { ...list, expenses: updatedExpenses }
@@ -90,6 +95,7 @@ export default (state, { type, payload }) => {
         ...state,
         lists: updatedLists,
       };
+
     case SET_EXPENSES:
       const importedExpenses = [...selectedList.expenses, ...payload];
 

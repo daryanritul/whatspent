@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import sty from './Sidebar.module.scss';
 
-import logoLg from '../../assets/logo-full.svg';
 import { v4 } from 'uuid';
 import { context } from '../../store/store';
 import { createNewList, deleteList, selectList } from '../../store/actions';
