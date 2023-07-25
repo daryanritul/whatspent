@@ -9,6 +9,7 @@ import {
 import { context } from '../../store/store';
 import Delete from '../../assets/delete.svg';
 import checkmark from '../../assets/checkmark.svg';
+import { formatDate } from '../../utils/utils';
 
 const DataRows = ({ data, index, head = false, setData }) => {
   const { dispatch, state } = useContext(context);
@@ -17,11 +18,7 @@ const DataRows = ({ data, index, head = false, setData }) => {
       selectedExpences(data)(dispatch);
     }
   };
-  const formatDate = dateStr => {
-    const date = new Date(dateStr);
-    const options = { day: 'numeric', month: 'short', year: 'numeric' };
-    return date.toLocaleDateString('en-GB', options);
-  };
+
   const updateAmountHandler = () => {
     updateExpensePendingAmount(state.selectedList, data.id)(dispatch);
   };

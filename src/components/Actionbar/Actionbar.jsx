@@ -7,6 +7,7 @@ import logout from '../../assets/logout.svg';
 import user from '../../assets/user.svg';
 import { v4 } from 'uuid';
 import Filters from '../Filters/Filters';
+import ExportExpenses from '../ExportExpenses/ExportExpenses';
 
 const Actionbar = ({ mobileState }) => {
   const { dispatch, state } = useContext(context);
@@ -15,7 +16,7 @@ const Actionbar = ({ mobileState }) => {
   const [description, setDescription] = useState('');
 
   const [label, setLabel] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [date, setDate] = useState(today);
   const [pendingAmount, setPendingAmount] = useState(0);
   const [suggestions, setSuggestions] = useState([]);
@@ -36,27 +37,24 @@ const Actionbar = ({ mobileState }) => {
     ...new Set(selectedListExpenses.map(expense => expense.label)),
   ];
 
-  const handleSuggestionClick = suggestion => {
-    setLabel(suggestion);
-    setSuggestions([]);
-  };
-
   const handleAddToList = () => {
-    addExpenses({
-      id: v4(),
-      description,
-      label,
-      amount,
-      pendingAmount: pendingAmount.length === 0 ? 0 : pendingAmount,
-      date,
-    })(dispatch);
-    setDescription('');
-    setLabel('');
-    setAmount(0);
-    setDate('');
-    setPendingAmount(0);
+    if (label.length > 0 && amount.length > 0) {
+      addExpenses({
+        id: v4(),
+        description,
+        label,
+        amount,
+        pendingAmount: pendingAmount.length === 0 ? 0 : pendingAmount,
+        date,
+      })(dispatch);
+      setDescription('');
+      setLabel('');
+      setAmount('');
+      setDate(today);
+      setPendingAmount(0);
+    }
   };
-
+  console.log(state.error);
   return (
     <div
       className={`${sty.actionBar} ${
@@ -77,9 +75,14 @@ const Actionbar = ({ mobileState }) => {
       </div>
       <p className={sty.titles}>Action Center</p>
       <Filters />
+      <div className={sty.mobileOnly}>
+        <ExportExpenses expenses={selectedListExpenses} />
+      </div>
       <p className={sty.addTitle}>Add New Expence</p>
       <div className={`${sty.inputBox} ${sty.labelInput}`}>
-        <label htmlFor="labelSelect">Labels</label>
+        <label htmlFor="labelSelect" className={sty.mandatory}>
+          Labels
+        </label>
         <div className={sty.labelOption}>
           <input
             type="text"
@@ -87,7 +90,7 @@ const Actionbar = ({ mobileState }) => {
             value={label}
             onChange={handleInputChange}
           />
-
+          <small>or</small>
           <select
             id={sty.labelSelect}
             value={label}
@@ -104,7 +107,9 @@ const Actionbar = ({ mobileState }) => {
       </div>
       <div className={sty.mobileBoxInput}>
         <div className={sty.inputBox}>
-          <label htmlFor="">Amount</label>
+          <label htmlFor="" className={sty.mandatory}>
+            Amount
+          </label>
           <input
             type="number"
             placeholder="Rs."
@@ -125,7 +130,9 @@ const Actionbar = ({ mobileState }) => {
       </div>
       <div className={sty.mobileBoxInput}>
         <div className={sty.inputBox} id={sty.dateBox}>
-          <label htmlFor="">Date</label>
+          <label htmlFor="" className={sty.mandatory}>
+            Date
+          </label>
           <input
             type="date"
             placeholder="Select Date"

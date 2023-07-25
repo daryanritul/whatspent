@@ -1,5 +1,5 @@
 @import '../../style/variables.scss';
-.downloadBtn { 
+.exportExpenses { 
     display: flex;
 }
 .exportBtn{
@@ -13,13 +13,12 @@
     flex-direction: row;
     border-radius: 3px;
     cursor: pointer;
-    border: 1px solid $natural-100;
+    border: 1px solid  $brand-600-main;
     font-size: 12px;
     text-decoration: none;
     font-weight: normal;
     &:hover { 
         background: $brand-50;
-        border: 1px solid $brand-600-main;
     }
 }
 .downImg { 
@@ -40,6 +39,10 @@
     display: none;
   }
   @media (max-width: 480px){
+    .exportExpenses { 
+        justify-content: space-around;
+        width: 100%;
+    }
     .exportBtn { 
         padding: 5px 10px;
         margin: 5px;

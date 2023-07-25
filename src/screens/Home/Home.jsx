@@ -8,7 +8,7 @@ import Actionbar from '../../components/Actionbar/Actionbar';
 
 import { context } from '../../store/store';
 
-import { calculateTotals } from '../../utils/utils';
+import { calculateTotals, formatDate } from '../../utils/utils';
 
 import library from '../../assets/library.svg';
 import noDollar from '../../assets/noDollar.svg';
@@ -41,7 +41,12 @@ const Home = () => {
     <div className={sty.home}>
       <Sidebar mobileState={mobileState} setMobileState={setMobileState} />
       <div className={`${sty.homeBody}`}>
-        <p className={sty.titles}>Overview / {selectedList.name}</p>
+        <div className={sty.titles}>
+          <p>{selectedList.name}</p>
+          <div className={sty.desktopOnly}>
+            <ExportExpenses expenses={selectedListExpenses} />
+          </div>
+        </div>
         <div className={sty.overviewBox}>
           <SpentCard
             title={'Total Expances'}
@@ -60,8 +65,23 @@ const Home = () => {
           />
         </div>
         <div className={sty.expTitles}>
-          <p>Expenses</p>
-          <ExportExpenses expenses={selectedListExpenses} />
+          <p>
+            Expenses
+            <small>
+              {' '}
+              ({selectedList.filters.label ? selectedList.filters.label : 'All'}
+              )
+            </small>
+            {selectedList.filters.startDate && selectedList.filters.endDate ? (
+              <small>
+                From{' '}
+                <strong>{formatDate(selectedList.filters.startDate)}</strong> to{' '}
+                <strong>{formatDate(selectedList.filters.endDate)}</strong>
+              </small>
+            ) : (
+              <></>
+            )}
+          </p>
         </div>
         <div className={sty.exp}>
           <DataRows head={true} />

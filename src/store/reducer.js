@@ -4,6 +4,7 @@ import {
   AUTHENTICATION,
   AUTH_FAILED,
   AUTH_START,
+  CLEAR_ERROR,
   DELETE_EXPENSE,
   DELETE_LIST,
   FETCH_DATA,
@@ -38,6 +39,11 @@ export default (state, { type, payload }) => {
         ...state,
         loading: false,
         error: payload,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: false,
       };
     case FETCH_DATA:
       return {

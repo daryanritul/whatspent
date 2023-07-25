@@ -13,13 +13,15 @@
 .auth{
     position: relative;
     width: 550px;
-    height: 550px;
+    height: 600px;
     background: $basic-white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
 }
 .logo {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -33,13 +35,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px;
 }
 .switch > * {
-    padding: 10px;
+    padding: 8px;
     background: $brand-600-main;
-    color: $basic-white;
-    width: 180px;
+    color: $natural-200;
+    width: 150px;
     text-align: center;
     border-bottom : 1px solid $brand-600-main;
     cursor: pointer;
@@ -50,12 +51,20 @@
 }
 .switch > *.active{
     background: $basic-white;
+    background: transparent;
     color: $brand-600-main;
 }
 .subtitle{
     text-align: center;
     font-size: 14px;
-    padding:5px;
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $brand-600-main;
+     p {
+        width: 50%;
+     }
 }
 .auth .form{
   
@@ -68,8 +77,10 @@
 .inputBox{
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
     width: 60%;
+    position: relative;
+    padding: 3px;
+
     label {
         padding: 3px;
         font-size: 14px;
@@ -78,7 +89,22 @@
         padding: 10px;
         border : 1px solid $brand-600-main;
         border-radius: 5px;
+        background: transparent;
+        &:focus{
+            background: transparentize($color: $natural-100, $amount: 0.9)
+        }
     }
+    small {
+        height: 14px;
+        font-size: 12px;
+        color: $status-danger-600;
+        padding: 2px 5px;
+    }
+}
+.authError {
+    height: 14px;
+    font-size: 12px;
+    color: $status-danger-600;
 }
 .auth button { 
     position: absolute;
@@ -92,14 +118,36 @@ bottom : 25px;
     cursor: pointer;
 }
 
+.mandatory{
+    &::after{
+        content: '*';
+        color: $status-danger-600;
+    }
+}
+.showPass{
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    pointer-events: none;
+    p { 
+        pointer-events: all;
+        cursor: pointer;
+        margin-top: 3px;
+        font-size: 12px;
+        padding: 3px;
+    }
+}
 @media (max-width: 480px){
     .app{
         // align-items: end;
      
     }
     .auth{
-        width: 80%;
-        height: 70%;
+        width: 85%;
+        height: 80%;
         margin-bottom: 70px;
     }
     .switch{
@@ -109,9 +157,14 @@ bottom : 25px;
         }
     }
     .subtitle{
-        font-size: 10px;
+        font-size: 12px;
+        padding: 10px;
+         p{
+            width: 90%;
+         }
     }
     .inputBox { 
         width: 90%;
+        padding: 5px;
     }
 }

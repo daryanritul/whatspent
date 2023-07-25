@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react';
 import sty from './Authentication.module.scss';
 
 import Logo from '../../assets/Logo.svg';
-import { loginUser, registerUser } from '../../store/actions';
+import { clearErrors, loginUser, registerUser } from '../../store/actions';
 import { context } from '../../store/store';
 import {
   comparePasswords,
+  getAuthErrorMessage,
   validateEmail,
   validatePassword,
 } from '../../utils/utils';
@@ -20,6 +21,7 @@ const Authentication = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [showPassWord, setShowPassWord] = useState('password');
   const navigate = useNavigate();
   const handleEmailChange = e => {
     setEmail(e.target.value);
@@ -49,7 +51,7 @@ const Authentication = () => {
 
     // Validate password
     if (!validatePassword(password)) {
-      setPasswordError('Password should be at least 8 characters long');
+      setPasswordError('Password should be at least 6 characters long');
       return;
     }
 
@@ -60,6 +62,13 @@ const Authentication = () => {
     }
     if (authSwitch) registerUser({ email, password, navigate })(dispatch);
     else loginUser({ email, password, navigate })(dispatch);
+  };
+
+  const clearErrorHandler = () => {
+    if (passwordError) setPasswordError('');
+    if (confirmPasswordError) setConfirmPasswordError('');
+    if (emailError) setEmailError('');
+    if (state.error) clearErrors()(dispatch);
   };
 
   return (
@@ -84,41 +93,81 @@ const Authentication = () => {
         </div>
         <div className={sty.subtitle}>
           {authSwitch ? (
-            <div>Create your new Account.</div>
+            <p>Join us today and take control of your financial journey!</p>
           ) : (
-            <div>Enter your details to Login</div>
+            <p>
+              Welcome back! Please enter your credentials to access your
+              account.
+            </p>
           )}
         </div>
         <div className={sty.form}>
           <div className={sty.inputBox}>
-            <label htmlFor="">Email</label>
+            <label htmlFor="" className={sty.mandatory}>
+              Email
+            </label>
             <input
               type="email"
               placeholder="Email Address"
               value={email}
               onChange={handleEmailChange}
+              onFocus={() => clearErrorHandler()}
             />
+            <small>{emailError}</small>
           </div>
           <div className={sty.inputBox}>
-            <label htmlFor="">Password</label>
+            <label htmlFor="" className={sty.mandatory}>
+              Password
+            </label>
             <input
-              type="password"
+              type={showPassWord}
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
+              onFocus={() => clearErrorHandler()}
             />
+            <div className={sty.showPass}>
+              <p
+                onClick={() =>
+                  setShowPassWord(prev =>
+                    prev === 'password' ? 'text' : 'password'
+                  )
+                }
+              >
+                {showPassWord === 'password' ? 'show' : 'hide'}
+              </p>
+            </div>
+            <small>{passwordError}</small>
           </div>
           {authSwitch && (
             <div className={sty.inputBox}>
-              <label htmlFor="">Password</label>
+              <label htmlFor="" className={sty.mandatory}>
+                Password
+              </label>
               <input
-                type="password"
+                type={showPassWord}
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
+                onFocus={() => clearErrorHandler()}
               />
+              <div className={sty.showPass}>
+                <p
+                  onClick={() =>
+                    setShowPassWord(prev =>
+                      prev === 'password' ? 'text' : 'password'
+                    )
+                  }
+                >
+                  {showPassWord === 'password' ? 'show' : 'hide'}
+                </p>
+              </div>
+              <small>{confirmPasswordError}</small>
             </div>
           )}
+          <small className={sty.authError}>
+            {getAuthErrorMessage(state.error)}
+          </small>
           <button onClick={e => handleSubmit(e)}>
             {authSwitch ? 'Register' : 'Login'}
           </button>

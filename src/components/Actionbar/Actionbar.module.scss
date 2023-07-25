@@ -73,6 +73,13 @@
         width: 100%;
         margin: 0 5px;
     }
+    small { 
+        width: fit-content;
+       margin: 0px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
     
 }
 
@@ -110,6 +117,15 @@ select#labelSelect{
 .mobileBoxInput{
     width: 100%;
 }
+.mandatory{
+    &::after{
+        content: '*';
+        color: $status-danger-600;
+    }
+}
+.mobileOnly{
+    display: none;
+}
 @media (max-width: 480px){
     .actionBar.close{
         display: none;
@@ -139,5 +155,11 @@ select#labelSelect{
         input { 
             width: 100%;
         }
+    }
+    .mobileOnly { 
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        border-bottom: .5px solid $natural-300;
     }
 }

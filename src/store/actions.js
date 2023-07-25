@@ -6,6 +6,7 @@ import {
   AUTHENTICATION,
   AUTH_FAILED,
   AUTH_START,
+  CLEAR_ERROR,
   DELETE_EXPENSE,
   DELETE_LIST,
   FETCH_DATA,
@@ -62,7 +63,7 @@ export const userAuthState =
         navigate('/auth');
         dispatch({
           type: AUTH_FAILED,
-          payload: 'Please Login',
+          payload: false,
         });
       }
     });
@@ -90,7 +91,7 @@ export const registerUser =
       .catch(error => {
         dispatch({
           type: AUTH_FAILED,
-          payload: error.message,
+          payload: error.code,
         });
       });
   };
@@ -116,7 +117,7 @@ export const loginUser =
       .catch(error => {
         dispatch({
           type: AUTH_FAILED,
-          payload: error.message,
+          payload: error.code,
         });
       });
   };
@@ -131,7 +132,7 @@ export const signOutUser = () => dispatch => {
     .catch(error => {
       dispatch({
         type: AUTH_FAILED,
-        payload: error.message,
+        payload: error.code,
       });
     });
 };
@@ -200,5 +201,11 @@ export const deleteExpense = (listID, expenseID) => dispatch => {
       listID,
       expenseID,
     },
+  });
+};
+
+export const clearErrors = () => dispatch => {
+  dispatch({
+    type: CLEAR_ERROR,
   });
 };

@@ -89,7 +89,7 @@ const ExportExpenses = ({ expenses }) => {
   };
 
   return (
-    <div className={sty.downloadBtn}>
+    <div className={sty.exportExpenses}>
       {/* Excel Export */}
       <button onClick={handleExportToExcel} className={sty.exportBtn}>
         <img src={download} alt="" className={sty.downImg} />

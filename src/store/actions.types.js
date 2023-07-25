@@ -4,6 +4,7 @@ export const AUTH_FAILED = 'AUTH_FAILED';
 export const SIGN_OUT = 'SIGN_OUT';
 
 export const FETCH_DATA = 'FETCH_DATA';
+export const CLEAR_ERROR = 'CLEAR_ERROR';
 
 export const ADD_LIST = 'ADD_LIST';
 export const SELECT_LIST = 'SELECT_LIST';

@@ -23,6 +23,8 @@
     font-size: 18px;
     font-weight: bold;
     color: $brand-600-main;
+    display: flex;
+    justify-content: space-between;
 }
 .expTitles{
     display: flex;
@@ -40,6 +42,11 @@
         option { 
             color: $brand-600-main;
         }
+        }
+        small { 
+            font-weight: normal;
+            padding-left: 5px;
+            padding-right: 10px;
         }
     
 }
@@ -151,7 +158,7 @@
     .overviewBox{
         flex-direction: column;
         height: auto;
-    }
+}
     .expTitles { 
         align-items: center;
     }
@@ -160,5 +167,8 @@
     }
     .mobileNav { 
         display: flex;
+    }
+    .desktopOnly{
+        display: none;
     }
 }
