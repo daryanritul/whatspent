@@ -1,7 +1,8 @@
 # [Whatspent](https://whatspent.daryanritul.in)
 
 <p align="center">
-  <img  height="300" src="./src/assets/Logo.svg">
+  <img  height="300" src="https://github.com/daryanritul/whatspent/assets/67550989/f40abecd-732f-4e61-8bd8-be8301e3ad5f">
+
 </p>
 
  [Whatspent]((https://whatspent.daryanritul.in)) Website Link
@@ -13,12 +14,16 @@ Whatspent is a web application built to help users manage their finances effecti
 ## Screenshots
 Desktop
 
- <img  width="100%" src="./src/assets/screenshots/Desktop.png">
+ <img  width="100%" src="https://github.com/daryanritul/whatspent/assets/67550989/6218698a-ec40-40a0-8e44-91b0c20cbd2a">
+
  Mobile
  <p align="center">
- <img  width="32%" src="./src/assets/screenshots/Mobile-2.png">
- <img  width="32%" src="./src/assets/screenshots/Mobile.png">
- <img  width="32%" src="./src/assets/screenshots/Mobile-3.png">
+ <img  width="32%" src="https://github.com/daryanritul/whatspent/assets/67550989/39a14383-5d19-409a-81d1-649f3c2b9ec5">
+
+ <img  width="32%" src="https://github.com/daryanritul/whatspent/assets/67550989/ff7b1eae-84a2-46f5-811c-57af974c1926">
+
+ <img  width="32%" src="https://github.com/daryanritul/whatspent/assets/67550989/2a1e27bb-e7e2-4a47-80de-239263dc4e38">
+
  <p>
 
 ## Features
@@ -40,7 +45,7 @@ Desktop
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/money-management-app.git
+   git clone https://github.com/daryanritul/whatspent.git
 2.  Navigate to the project directory:
 
     ```bash
