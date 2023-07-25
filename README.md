@@ -14,7 +14,8 @@ Whatspent is a web application built to help users manage their finances effecti
 ## Screenshots
 Desktop
 
- <img  width="100%" src="./src/assets/screenshots/Desktop.png">
+ <img  width="100%" src="https://github.com/daryanritul/whatspent/assets/67550989/93b2acf1-41ad-42e0-91cc-e3ea09e23482">
+
  Mobile
  <p align="center">
  <img  width="32%" src="https://github.com/daryanritul/whatspent/assets/67550989/39a14383-5d19-409a-81d1-649f3c2b9ec5">
