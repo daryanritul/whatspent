@@ -1,15 +1,17 @@
 # [Whatspent](https://whatspent.daryanritul.in)
 
 <p align="center">
+  <a href = 'https://whatspent.daryanritul.in'>
   <img  height="300" src="https://github.com/daryanritul/whatspent/assets/67550989/f40abecd-732f-4e61-8bd8-be8301e3ad5f">
-
+  </a>
 </p>
 
- [Whatspent]((https://whatspent.daryanritul.in)) Website Link
  
 ## Introduction
 
 Whatspent is a web application built to help users manage their finances effectively. It allows users to track their expenses, income, and budgets, and provides various features to analyze and visualize their financial data.
+
+ [Whatspent : https://whatspent.daryanritul.in](https://whatspent.daryanritul.in) Website Link Here
 
 ## Screenshots
 Desktop
@@ -49,7 +51,7 @@ Desktop
 2.  Navigate to the project directory:
 
     ```bash
-    cd money-management-app
+    cd whatspent
 3.  Install dependencies:
 
     ```bash
