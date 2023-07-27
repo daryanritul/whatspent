@@ -139,6 +139,8 @@ select#labelSelect{
         z-index: 999;
         height: calc(100dvh  - 60px);
         background: $natural-100;
+        overflow-y: auto;
+        padding-bottom: 50px;
     }
     .mobileBoxInput{
         display: flex;
@@ -161,5 +163,8 @@ select#labelSelect{
         display: flex;
         padding: 10px;
         border-bottom: .5px solid $natural-300;
+    }
+    .actionBtn {
+        position: fixed;
     }
 }
