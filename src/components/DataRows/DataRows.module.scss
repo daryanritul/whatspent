@@ -75,7 +75,7 @@ grid-row-gap: 0px;
     color: $status-danger-600;
 }
 
-@media (max-width: 480px){
+@media (max-width: 900px){
      .expRows{
         display: grid;
         grid-template-columns: repeat(2, 1fr);

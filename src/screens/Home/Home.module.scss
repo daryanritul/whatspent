@@ -3,6 +3,7 @@
 
 .home{
     display: flex;
+
     height: 100vh;
     width: 100vw;
     user-select: none; /* supported by Chrome and Opera */
@@ -12,11 +13,17 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     position: relative;
 }
+
+
 .homeBody{
     flex : 1;
     display: flex;
     flex-direction: column;
-    
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
 }
 .titles{
     padding: 10px;
@@ -155,10 +162,7 @@
         display: none;
         overflow: hidden;
     }
-    .overviewBox{
-        flex-direction: column;
-        height: auto;
-}
+
     .expTitles { 
         align-items: center;
     }
@@ -167,8 +171,15 @@
     }
     .mobileNav { 
         display: flex;
+        z-index: 999;
     }
     .desktopOnly{
         display: none;
     }
+}
+@media (max-width: 1000px){
+    .overviewBox{
+        flex-direction: column;
+        height: auto;
+}   
 }

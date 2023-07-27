@@ -40,6 +40,7 @@ const Home = () => {
   return (
     <div className={sty.home}>
       <Sidebar mobileState={mobileState} setMobileState={setMobileState} />
+
       <div className={`${sty.homeBody}`}>
         <div className={sty.titles}>
           <p>{selectedList.name}</p>
@@ -133,6 +134,7 @@ const Home = () => {
           )}
         </div>
       </div>
+
       <Actionbar mobileState={mobileState} setMobileState={setMobileState} />
     </div>
   );
