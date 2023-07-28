@@ -6,6 +6,7 @@ import { context } from '../../store/store';
 import { createNewList, deleteList, selectList } from '../../store/actions';
 import Delete from '../../assets/delete.svg';
 import Logo from '../../assets/Logo.svg';
+import Checkmrk from '../../assets/checkmark.svg';
 
 const Sidebar = ({ mobileState }) => {
   const { state, dispatch } = useContext(context);
@@ -37,6 +38,17 @@ const Sidebar = ({ mobileState }) => {
         endDate: null,
       },
     })(dispatch);
+  };
+
+  const addToListHandler = (e, item) => {
+    e.stopPropagation();
+    if (item.value !== '') {
+      addToList();
+    }
+    setItem({
+      value: '',
+      status: false,
+    });
   };
   return (
     <>
@@ -102,36 +114,51 @@ const Sidebar = ({ mobileState }) => {
               Create new List
             </button>
           ) : (
-            <input
-              type={'text'}
-              className={`${sty.button} ${sty.input}`}
-              onChange={event =>
-                setItem({
-                  ...item,
-                  value: event.target.value,
-                })
-              }
-              value={item.value}
-              autoFocus={item.status}
-              placeholder={'Enter List Name'}
-              onKeyDown={event => {
-                if (event.key === 'Enter') {
-                  if (item.value !== '') {
-                    addToList();
-                  }
+            <>
+              {' '}
+              <input
+                type={'text'}
+                className={`${sty.button} ${sty.input}`}
+                onChange={event =>
                   setItem({
-                    value: '',
-                    status: false,
-                  });
+                    ...item,
+                    value: event.target.value,
+                  })
                 }
-              }}
-              onBlur={() =>
-                setItem({
-                  value: '',
-                  status: false,
-                })
-              }
-            />
+                value={item.value}
+                autoFocus={item.status}
+                placeholder={'Enter List Name'}
+                onKeyDown={event => {
+                  if (event.key === 'Enter') {
+                    if (item.value !== '') {
+                      addToList();
+                    }
+                    setItem({
+                      value: '',
+                      status: false,
+                    });
+                  }
+                }}
+                onBlur={() =>
+                  setTimeout(
+                    () =>
+                      setItem({
+                        value: '',
+                        status: false,
+                      }),
+                    2000
+                  )
+                }
+              />
+              {item.status && (
+                <div
+                  className={sty.addImg}
+                  onClick={e => addToListHandler(e, item)}
+                >
+                  <img src={Checkmrk} />
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

@@ -53,6 +53,7 @@
 //   }
   .buttonBox {
     height: 7%;
+    position: relative;
   }
   .button {
     width: 100%;
@@ -78,6 +79,9 @@
   }
   .input {
     padding: 0 1rem;
+    &::placeholder { 
+        color: $natural-300;
+    }
   }
   .icons {
     display: flex;
@@ -179,4 +183,25 @@
    
         padding: 10px;
      }
+     
   }
+  .addImg { 
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: $brand-600-main;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img { 
+    width: 30px;
+    margin: 10px;
+    border-radius: 3px;
+    background: $brand-800;
+    &:hover { 
+        background: $brand-500;
+    }
+    }
+ }
