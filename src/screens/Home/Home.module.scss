@@ -1,185 +1,162 @@
-
 @import '../../style/variables.scss';
 
-.home{
-    display: flex;
+.homeContainer {
+  background-color: $natural-50;
+  padding: 1rem;
+  border-radius: 3px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 10px 10%;
+  margin-bottom: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+.logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 50px;
+  }
+}
+.addTransaction {
+  margin-top: 2rem;
+  h3 {
+    color: $brand-500;
+  }
 
-    height: 100vh;
-    width: 100vw;
-    user-select: none; /* supported by Chrome and Opera */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    position: relative;
+  .input,
+  .select {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 3px;
+    border: 1px solid $natural-400;
+  }
+
+  .addBtn {
+    background-color: $brand-500;
+    color: $basic-white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 1.1rem;
+
+    &:hover {
+      background-color: $brand-600-main;
+    }
+  }
 }
 
-
-.homeBody{
-    flex : 1;
+.addNewBtn {
+  position: fixed;
+  bottom: 5px;
+  right: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  button {
+    width: 200px;
+    padding: 10px 15px;
+    background-color: $brand-500;
+    color: $basic-white;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
     display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
-    align-self: auto;
-    order: 0;
+    justify-content: center;
+    align-items: center;
+    span {
+      padding-left: 5px;
+    }
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+    &:nth-child(1) {
+      background: $status-success-600;
+      &:hover {
+        background-color: $status-success-400;
+      }
+    }
+    &:nth-child(2) {
+      background: $status-danger-600;
+      &:hover {
+        background-color: $status-danger-400;
+      }
+    }
+  }
 }
-.titles{
+
+@media (max-width: 768px) {
+  .addNewBtn {
+    bottom: 5px;
+    width: 100%;
+    margin: 0px;
+    left: 0px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0px;
+    button {
+      font-size: 12px;
+      margin: 0 10px;
+    }
+  }
+  .modal {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+
+  .modal .input,
+  .modal .select {
+    padding: 0.6rem;
+  }
+
+  .modal .addBtn {
+    padding: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeContainer {
+    margin: 0;
+    border: 0px;
+    background: transparent;
     padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    color: $brand-600-main;
-    display: flex;
-    justify-content: space-between;
-}
-.expTitles{
-    display: flex;
-    justify-content: space-between;
-        padding: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        color: $brand-600-main;
-        select {
-        color: $brand-600-main;
-        background-color: transparent;
-        font-size: 16px;
-        min-width: 80px;
-        max-width: 150px;
-        option { 
-            color: $brand-600-main;
-        }
-        }
-        small { 
-            font-weight: normal;
-            padding-left: 5px;
-            padding-right: 10px;
-        }
-    
-}
-.overviewBox{
-    height: 70px;
-    display: flex;
-    flex-direction: row;
-    padding: 0 20px;
-}
-
-.exp{
-    flex: 1;
-    overflow: auto;
-    
-}
-
-
-.pages{
-    width: 100%;
-    background: green;
-}
-.actions {
-    position: absolute;
-    right: 10px;
-   
-}
-.downloadBtn { 
-    display: flex;
-    &>* {
-        background: $basic-white;
-        padding: 5px 10px;
-        margin: 0 10px;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        border-radius: 3px;
-        cursor: pointer;
-        border: 1px solid $natural-100;
-        font-size: 12px;
-        &:hover { 
-            background: $brand-50;
-            border: 1px solid $brand-600-main;
-        }
-    }
-}
-.downImg { 
-    width: 20px;
-    margin-right: 5px;
-}
-.emptyList{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    padding: 70px;
-    & img {
-        width: 100px;
-        opacity: .7;
-    }
-    & p {
-        font-size: 20px;
-        color: $brand-500;
-    }
-}
-.mobileNav{
+    padding-bottom: 70px;
+  }
+  .logo {
     display: none;
-    width: 100%;
-    border-top: 1px solid $natural-300;
-    height: 60px;
-}
-.mobileItem { 
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    img { 
-        width: 30px;
-        margin-right: 8px;
-        padding:4px;
-        border-radius: 5px;
-    }
-    p { 
-        font-size: 14px;
-    }
-    &:hover { 
-        background: $brand-600-main;
-        color: $basic-white;
-        img { 
-            background: $basic-white;
+  }
+  .summary {
+    .balance {
+      .balanceItem {
+        font-size: 1rem;
+        min-width: 150px;
+        padding: 10px;
+        span {
+          font-size: 0.9rem;
         }
+        strong {
+          font-size: 1rem;
+        }
+      }
     }
-}
-@media (max-width: 480px){
-    .home { 
-        height: 100dvh;
-    }
-    .homeBody.open{
-        display: flex;
-    }
-    .homeBody.close{
-        display: none;
-        overflow: hidden;
-    }
-
-    .expTitles { 
-        align-items: center;
-    }
-    .expTitles ,.titles{ 
-        font-size: 16px;
-    }
-    .mobileNav { 
-        display: flex;
-        z-index: 999;
-    }
-    .desktopOnly{
-        display: none;
-    }
-}
-@media (max-width: 1000px){
-    .overviewBox{
-        flex-direction: column;
-        height: auto;
-}   
+  }
 }

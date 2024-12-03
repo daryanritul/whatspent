@@ -1,0 +1,186 @@
+@import '../../style/variables.scss';
+
+.transactions {
+  margin-top: 0.5rem;
+  background: $basic-white;
+  padding: 0.5rem;
+  border-radius: 3px;
+  h4 {
+    color: $brand-600-main;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.emptyList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background-color: $natural-50;
+  border-radius: 3px;
+  text-align: center;
+  color: $natural-600-main;
+  width: 100%;
+  p {
+    font-size: 1rem;
+    color: $natural-600-main;
+    margin: 0;
+  }
+}
+.tableHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: $brand-600-main;
+  }
+}
+
+.transactionTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  th {
+    text-align: left;
+    background-color: $natural-200;
+    color: $brand-600-main;
+    padding: 10px;
+    &:last-child {
+      text-align: right;
+    }
+    &:nth-child(5) {
+      text-align: right;
+    }
+  }
+
+  td {
+    padding: 10px;
+  }
+}
+
+.transactionRow {
+  &:nth-child(even) {
+    background-color: $natural-100;
+  }
+  &:nth-child(odd) {
+    background-color: $basic-white;
+  }
+}
+
+.descriptionCell {
+  width: 30%;
+}
+
+.categoryCell {
+  width: 20%;
+}
+
+.incomeActivity {
+  color: $status-success-600;
+}
+
+.expenseActivity {
+  color: $status-danger-600;
+}
+
+.balanceCell {
+  width: 20%;
+  text-align: right;
+  color: $brand-600-main;
+}
+
+.dateCell {
+  text-align: left;
+}
+tr {
+  position: relative;
+}
+.deleteCell {
+  display: flex;
+  flex: 1;
+  justify-content: right;
+  align-items: center;
+  .icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    color: $status-danger-400;
+    &:hover {
+      color: $status-danger-600;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .transactionTable {
+    display: none;
+    width: 100%;
+    thead {
+      display: none;
+    }
+    tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .transactionRow {
+      display: flex;
+      flex-direction: column;
+      background: $basic-white;
+      padding: 0.3rem 1rem;
+      border: 1px solid $natural-300;
+      border-radius: 3px;
+      position: relative;
+      td {
+        display: block;
+        width: 100%;
+        border-bottom: none;
+        padding: 2px 0;
+      }
+      .descriptionCell {
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: $brand-700;
+      }
+
+      .categoryCell,
+      .dateCell {
+        font-size: 0.8rem;
+        color: $natural-600-main;
+      }
+      .dateCell {
+        position: absolute;
+        right: 1rem;
+        font-weight: bold;
+        text-align: right;
+        width: fit-content;
+      }
+
+      .balanceCell {
+        position: absolute;
+        left: 1rem;
+        bottom: 0.5rem;
+        text-align: left;
+        width: fit-content;
+      }
+      .deleteCell {
+        display: none;
+      }
+      .incomeActivity,
+      .expenseActivity {
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: right;
+      }
+    }
+  }
+}

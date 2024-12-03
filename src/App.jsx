@@ -7,35 +7,50 @@ import { userAuthState } from './store/actions';
 import Loading from './screens/Loading/Loading';
 import { database } from './firebase/firebase';
 import { ref, set } from 'firebase/database';
+import Profile from './screens/Profile/Profile';
+import Header from './components/Header/Header';
+import Saved from './screens/Saved/Saved';
 
 const App = () => {
   const { state, dispatch } = useContext(context);
   const navigate = useNavigate();
+
   useEffect(() => {
     userAuthState({ navigate })(dispatch);
   }, []);
-  console.log(state);
+
   useEffect(() => {
     if (state.user && state.dataFetched) {
-      set(ref(database, 'users/' + state.user.uid), {
-        lists: state.lists,
+      set(ref(database, `users/${state.user.uid}`), {
+        profile: state.profile,
+        financialData: state.financialData,
       });
-      console.log('STATE DONE');
     }
-  }, [state]);
+  }, [state.profile, state.financialData]);
 
   return (
-    <div>
+    <div className="appContainer">
       {state.loading ? (
         <Loading />
       ) : (
-        <Routes>
-          <Route
-            path="/"
-            element={state.user ? <Home /> : <Navigate to="/auth" />}
-          />
-          <Route path="/auth" element={<Authentication />} />
-        </Routes>
+        <>
+          {state.user && <Header />}
+          <Routes>
+            <Route
+              path="/profile"
+              element={state.user ? <Profile /> : <Navigate to="/auth" />}
+            />
+            <Route
+              path="/"
+              element={state.user ? <Home /> : <Navigate to="/auth" />}
+            />
+            <Route path="/auth" element={<Authentication />} />
+            <Route
+              path="/saved"
+              element={state.user ? <Saved /> : <Navigate to="/auth" />}
+            />
+          </Routes>
+        </>
       )}
     </div>
   );

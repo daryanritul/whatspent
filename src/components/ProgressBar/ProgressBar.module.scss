@@ -1,0 +1,62 @@
+@import '../../style/variables.scss';
+.progressBar {
+  margin-top: 1rem;
+  padding: 10px;
+  color: $brand-600-main;
+  background: $natural-200;
+  border-radius: 3px;
+  .budgetUpdate {
+    padding: 2px 15px;
+    font-size: 0.8rem;
+    margin-left: 5px;
+    border-radius: 3px;
+    background-color: $brand-600-main;
+    color: $basic-white;
+
+    &:hover {
+      background-color: $brand-500;
+    }
+  }
+  .budgetTitle {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+
+  .budgetFoot {
+    display: flex;
+    justify-content: space-between;
+  }
+  span {
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .budgetInput {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding-left: 3px;
+    background: transparent;
+    color: $brand-600-main;
+    border-bottom: 2px solid transparent;
+    text-align: right;
+    &:focus {
+      border-bottom: 2px solid $brand-600-main;
+    }
+  }
+  .progress {
+    background-color: $natural-300;
+    border-radius: 3px;
+    height: 8px;
+    width: 100%;
+    margin: 0.5rem 0;
+
+    .progressBarFill {
+      background-color: $brand-500;
+      height: 100%;
+      border-radius: 2px;
+    }
+    .progressBarFill.BarFilled {
+      background: $status-danger-600;
+    }
+  }
+}

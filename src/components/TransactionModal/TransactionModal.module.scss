@@ -1,0 +1,102 @@
+@import '../../style/variables.scss';
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: $basic-white;
+  padding: 20px 30px;
+  border-radius: 3px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  h3 {
+    color: $brand-500;
+  }
+
+  .input,
+  .select {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 3px;
+    border: 1px solid $natural-400;
+  }
+
+  button {
+    background-color: $brand-500;
+    color: $basic-white;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    width: 100%;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: $brand-600-main;
+    }
+  }
+  .checkboxContainer {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 10px;
+
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      input[type='checkbox'] {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+        cursor: pointer;
+      }
+
+      span {
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .addBtn {
+    background-color: $brand-500;
+    color: $basic-white;
+    width: 65%;
+    &:hover {
+      background-color: $brand-600-main;
+    }
+  }
+  .closeBtn {
+    background-color: $natural-500;
+    color: $basic-white;
+    width: 30%;
+    margin-left: 5%;
+    &:hover {
+      background-color: $brand-600-main;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    margin: 10px;
+  }
+}

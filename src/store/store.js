@@ -6,20 +6,34 @@ export const initialState = {
   user: false,
   error: false,
   loading: false,
-  selectedList: 'abc123',
   dataFetched: false,
-  selectedExpnces: null,
-  lists: [
-    {
-      uid: 'abc123',
-      name: 'General Expenses',
-      expenses: [],
-      filters: {
-        label: '',
-        startDate: null,
-        endDate: null,
-      },
+  profile: {
+    name: {
+      firstName: 'User',
+      lastName: 'Name',
     },
-  ],
+    email: '',
+    categories: {
+      expenses: [
+        'Food',
+        'Gifts',
+        'Health/Medical',
+        'Home',
+        'Transportation',
+        'Personal',
+        'Pets',
+        'Utilities',
+        'Travel',
+        'Debt',
+        'Other',
+      ],
+      income: ['Savings', 'Paycheck', 'Bonus', 'Interest', 'Other'],
+    },
+  },
+  financialData: {
+    monthlyData: [],
+    personalLists: [],
+    transactions: [],
+    savedTransactions: [],
+  },
 };
-('');

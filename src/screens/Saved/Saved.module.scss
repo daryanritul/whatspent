@@ -1,0 +1,162 @@
+@import '../../style/variables.scss';
+
+.savedContainer {
+  background-color: $natural-50;
+  padding: 1rem;
+  border-radius: 3px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 10px 10%;
+  margin-bottom: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.transactions {
+  margin-top: 0.5rem;
+  background: $basic-white;
+  padding: 0.5rem;
+  border-radius: 3px;
+  h4 {
+    color: $brand-600-main;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.emptyList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background-color: $natural-50;
+  border-radius: 3px;
+  text-align: center;
+  color: $natural-600-main;
+  width: 100%;
+  p {
+    font-size: 1rem;
+    color: $natural-600-main;
+    margin: 0;
+  }
+}
+.tableHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: $brand-600-main;
+  }
+}
+
+.transactionTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  th {
+    text-align: left;
+    background-color: $natural-200;
+    color: $brand-600-main;
+    padding: 10px;
+    &:nth-child(4) {
+      text-align: right;
+      width: 100px;
+    }
+  }
+
+  td {
+    padding: 10px;
+  }
+}
+
+.transactionRow {
+  &:nth-child(even) {
+    background-color: $natural-100;
+  }
+  &:nth-child(odd) {
+    background-color: $basic-white;
+  }
+}
+
+.descriptionCell {
+  width: 30%;
+}
+
+.categoryCell {
+  width: 20%;
+}
+
+.incomeActivity {
+  color: $status-success-600;
+}
+
+.expenseActivity {
+  color: $status-danger-600;
+}
+
+.balanceCell {
+  width: 20%;
+  text-align: right;
+  color: $brand-600-main;
+}
+
+.dateCell {
+  text-align: left;
+}
+tr {
+  position: relative;
+}
+.addCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    color: $basic-white;
+    background-color: $brand-600-main;
+    width: fit-content;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover {
+      background-color: $brand-500;
+    }
+    &:last-child {
+      background: none;
+      padding: 0;
+      color: $basic-white;
+      margin-left: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      background: $status-danger-400;
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+      &:hover {
+        background: $status-danger-600;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .savedContainer {
+    margin: 0;
+    padding: 5px;
+  }
+  .transactionTable {
+    display: none;
+  }
+}

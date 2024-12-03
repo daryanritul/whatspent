@@ -1,170 +1,165 @@
 @import '../../style/variables.scss';
 
-.app{
-    width: 100vw;
-    height: 100vh;
-    background-color: $natural-100;
-    background-image: radial-gradient($brand-600-main, 1.85px, #e5e5f7 1.85px);
-    background-size: 37px 37px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: $natural-100;
+  background-image: radial-gradient($brand-600-main, 1.85px, #e5e5f7 1.85px);
+  background-size: 37px 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.auth{
-    position: relative;
-    width: 550px;
-    height: 600px;
-    background: $basic-white;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
+.auth {
+  position: relative;
+  width: 550px;
+  height: 600px;
+  background: $basic-white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
 }
 .logo {
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
 }
 .logo img {
-    height: 70px;
+  height: 70px;
 }
-.switch{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .switch > * {
-    padding: 8px;
-    background: $brand-600-main;
-    color: $natural-200;
-    width: 150px;
-    text-align: center;
-    border-bottom : 1px solid $brand-600-main;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+  padding: 8px;
+  background: $brand-600-main;
+  color: $natural-200;
+  width: 150px;
+  text-align: center;
+  border-bottom: 1px solid $brand-600-main;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
-.switch > *.active{
-    background: $basic-white;
-    background: transparent;
-    color: $brand-600-main;
+.switch > *.active {
+  background: $basic-white;
+  background: transparent;
+  color: $brand-600-main;
 }
-.subtitle{
-    text-align: center;
-    font-size: 14px;
-    padding:20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $brand-600-main;
-     p {
-        width: 50%;
-     }
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $brand-600-main;
+  p {
+    width: 50%;
+  }
 }
-.auth .form{
-  
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.auth .form {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.inputBox{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    position: relative;
-    padding: 3px;
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  position: relative;
+  padding: 3px;
 
-    label {
-        padding: 3px;
-        font-size: 14px;
+  label {
+    padding: 3px;
+    font-size: 14px;
+  }
+  input {
+    padding: 10px;
+    border: 1px solid $brand-600-main;
+    border-radius: 3px;
+    background: transparent;
+    &:focus {
+      background: transparentize($color: $natural-100, $amount: 0.9);
     }
-    input {
-        padding: 10px;
-        border : 1px solid $brand-600-main;
-        border-radius: 5px;
-        background: transparent;
-        &:focus{
-            background: transparentize($color: $natural-100, $amount: 0.9)
-        }
-    }
-    small {
-        height: 14px;
-        font-size: 12px;
-        color: $status-danger-600;
-        padding: 2px 5px;
-    }
-}
-.authError {
+  }
+  small {
     height: 14px;
     font-size: 12px;
     color: $status-danger-600;
+    padding: 2px 5px;
+  }
 }
-.auth button { 
-    position: absolute;
-bottom : 25px;
-    padding: 10px;
-    width: 60%;
-    background: $brand-600-main;
-    color: $basic-white;
-    margin-top: 20px;
-    border-radius: 5px;
-    cursor: pointer;
+.authError {
+  height: 14px;
+  font-size: 12px;
+  color: $status-danger-600;
+}
+.auth button {
+  position: absolute;
+  bottom: 25px;
+  padding: 10px;
+  width: 60%;
+  background: $brand-600-main;
+  color: $basic-white;
+  margin-top: 20px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
-.mandatory{
-    &::after{
-        content: '*';
-        color: $status-danger-600;
-    }
+.mandatory {
+  &::after {
+    content: '*';
+    color: $status-danger-600;
+  }
 }
-.showPass{
-    position: absolute;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 10px;
-    pointer-events: none;
-    p { 
-        pointer-events: all;
-        cursor: pointer;
-        margin-top: 3px;
-        font-size: 12px;
-        padding: 3px;
-    }
+.showPass {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  pointer-events: none;
+  p {
+    pointer-events: all;
+    cursor: pointer;
+    margin-top: 3px;
+    font-size: 12px;
+    padding: 3px;
+  }
 }
-@media (max-width: 720px){
-    .app{
-        // align-items: end;
-     
+@media (max-width: 720px) {
+  .auth {
+    width: 85%;
+    height: 80%;
+    margin-bottom: 70px;
+  }
+  .switch {
+    width: 100%;
+    & > * {
+      font-size: 12px;
     }
-    .auth{
-        width: 85%;
-        height: 80%;
-        margin-bottom: 70px;
+  }
+  .subtitle {
+    font-size: 12px;
+    padding: 10px;
+    p {
+      width: 90%;
     }
-    .switch{
-        width: 100%;
-        & > * {
-            font-size: 12px;
-        }
-    }
-    .subtitle{
-        font-size: 12px;
-        padding: 10px;
-         p{
-            width: 90%;
-         }
-    }
-    .inputBox { 
-        width: 90%;
-        padding: 5px;
-    }
+  }
+  .inputBox {
+    width: 90%;
+    padding: 5px;
+  }
 }

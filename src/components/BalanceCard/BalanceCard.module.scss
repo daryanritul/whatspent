@@ -1,0 +1,80 @@
+@import '../../style/variables.scss';
+
+.summary {
+  color: $basic-white;
+  h2 {
+    color: $basic-white;
+  }
+  .balance {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    .balanceItem {
+      background: $brand-600-main;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      padding: 10px;
+      flex: 1;
+      margin: 1px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+      .icon {
+        position: absolute;
+        top: 5%;
+        right: 0px;
+        width: 100px;
+        height: 90%;
+        opacity: 0.2;
+      }
+      span {
+        font-size: 1rem;
+        font-weight: bold;
+        color: $brand-300;
+      }
+      strong {
+        font-size: 2rem;
+      }
+      &:first-child {
+        background: $status-success-50;
+        color: $status-success-600;
+        span {
+          color: $status-success-600;
+        }
+      }
+      &:nth-child(2) {
+        background: $status-danger-50;
+        color: $status-danger-600;
+        span {
+          color: $status-danger-600;
+        }
+      }
+      &:last-child {
+        background: $natural-200;
+        color: $brand-600-main;
+        span {
+          color: $brand-600-main;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .summary {
+    .balance {
+      .balanceItem {
+        font-size: 1rem;
+        min-width: 150px;
+        padding: 10px;
+        span {
+          font-size: 0.9rem;
+        }
+        strong {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

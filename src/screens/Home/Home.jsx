@@ -1,142 +1,179 @@
-import React, { useContext, useState } from 'react';
-import sty from './Home.module.scss';
-
-import Sidebar from '../../components/Sidebar/Sidebar';
-import SpentCard from '../../components/SpentCard/SpentCard';
-import DataRows from '../../components/DataRows/DataRows';
-import Actionbar from '../../components/Actionbar/Actionbar';
-
+import React, { useState, useContext, useMemo, useEffect } from 'react';
+import styles from './Home.module.scss';
 import { context } from '../../store/store';
+import {
+  addTransaction,
+  createPersonalList,
+  deletePersonalList,
+  setMonthlyBudget,
+} from '../../store/actions';
+import { v4 } from 'uuid';
 
-import { calculateTotals, formatDate } from '../../utils/utils';
+import { filterFinancialData } from '../../utils/filters';
+import TransactionModal from '../../components/TransactionModal/TransactionModal';
 
-import library from '../../assets/library.svg';
-import noDollar from '../../assets/noDollar.svg';
-import close from '../../assets/close.svg';
-import setting from '../../assets/setting.svg';
-import ExportExpenses from '../../components/ExportExpenses/ExportExpenses';
+import BalanceCard from '../../components/BalanceCard/BalanceCard';
+import ListSelector from '../../components/ListSelector/ListSelector';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
+import TransactionTable from '../../components/TransactionTable/TransactionTable';
 
 const Home = () => {
   const { state, dispatch } = useContext(context);
-  const [selectedData, setSelectedData] = useState(false);
-  const [mobileState, setMobileState] = useState('home');
-  const selectedList =
-    state.lists.find(list => list.uid === state.selectedList) || {};
-  const selectedListExpenses = selectedList?.expenses || [];
+  const { financialData, profile } = state;
+  const [activeModal, setActiveModal] = useState(null);
+  const [newListName, setNewListName] = useState('');
 
-  const filters = selectedList?.filters || {
-    label: '',
-    startDate: null,
-    endDate: null,
+  const [data, setData] = useState({
+    transactions: [],
+    summary: { income: 0, expenses: 0, planned: 0, actual: 0 },
+  });
+
+  const [newTransaction, setNewTransaction] = useState({
+    uuid: v4(),
+    type: 'expenses',
+    date: new Date().toISOString(),
+    amount: '',
+    description: '',
+    category: '',
+    newBal: 0,
+    listType: 'monthly',
+  });
+
+  const [filters, setFilters] = useState({
+    listType: 'monthly',
+    month: new Date().getMonth() + 1,
+    year: new Date().getFullYear(),
+    pId: '',
+    pName: '',
+  });
+
+  useEffect(() => {
+    const result = filterFinancialData(financialData, filters);
+    setData(result);
+  }, [filters, financialData]);
+
+  const handleDeleteList = uuid => {
+    deletePersonalList(uuid)(dispatch);
+    setFilters({
+      ...filters,
+      pId: '',
+      pName: '',
+    });
   };
 
-  const { totalAmount, totalPendingAmount, filteredExpenses } = calculateTotals(
-    selectedListExpenses,
-    filters
-  );
+  const handleCreateNewList = () => {
+    if (newListName.trim() === '') return;
 
-  selectedListExpenses.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const newList = {
+      pId: v4(),
+      name: newListName,
+    };
 
+    setFilters({
+      ...filters,
+      pId: newList.pId,
+      pName: newList.name,
+    });
+    createPersonalList(newListName)(dispatch);
+    setNewListName('');
+    setActiveModal(null);
+  };
+
+  const handleAddTransaction = () => {
+    if (
+      newTransaction.date &&
+      newTransaction.amount &&
+      newTransaction.description
+    ) {
+      const updatedTransaction = {
+        ...newTransaction,
+        amount: parseFloat(newTransaction.amount),
+        date: new Date(newTransaction.date).toISOString(),
+        listType: filters.listType,
+      };
+
+      addTransaction({
+        transection: updatedTransaction,
+        pId: filters.pId,
+        mId: data.summary.mId,
+      })(dispatch);
+
+      setNewTransaction({
+        uuid: v4(),
+        type: 'expenses',
+        date: new Date().toISOString(),
+        amount: '',
+        description: '',
+        category: '',
+        listType: 'monthly',
+      });
+
+      closeModal();
+    }
+  };
+
+  const openModal = type => {
+    setNewTransaction({
+      ...newTransaction,
+      type: type,
+    });
+    setActiveModal(type);
+  };
+  const closeModal = () => setActiveModal(null);
   return (
-    <div className={sty.home}>
-      <Sidebar mobileState={mobileState} setMobileState={setMobileState} />
+    <div className={styles.homeContainer}>
+      <ListSelector filters={filters} setFilters={setFilters} />
+      <BalanceCard
+        card1={{
+          label: 'Total Income',
+          amount: data.summary.income.toLocaleString(),
+        }}
+        card2={{
+          label: 'Total Expenses',
+          amount: data.summary.expenses.toLocaleString(),
+        }}
+        card3={{
+          label: 'Remaining Balance',
+          amount: data.summary.actual.toLocaleString(),
+        }}
+      />
+      <div className={styles.summary}>
+        {filters.listType === 'monthly' && (
+          <ProgressBar
+            budget={data.summary.planned}
+            spentPercentage={
+              (data.summary.expenses / data.summary.planned) * 100
+            }
+            monthYear={filters.month * 10000 + filters.year}
+          />
+        )}
+      </div>
+      <TransactionTable
+        transactionList={data.transactions}
+        mId={filters.listType === 'monthly' ? data.summary.mId : false}
+        pId={filters.listType === 'personal' ? filters.pId : false}
+        pList={filters.listType === 'personal' ? filters.pName : false}
+      />
 
-      <div className={`${sty.homeBody}`}>
-        <div className={sty.titles}>
-          <p>{selectedList.name}</p>
-          <div className={sty.desktopOnly}>
-            <ExportExpenses expenses={selectedListExpenses} />
-          </div>
-        </div>
-        <div className={sty.overviewBox}>
-          <SpentCard
-            title={'Total Expances'}
-            type="primary"
-            amount={totalAmount}
-          />
-          <SpentCard
-            title={'Total Paid'}
-            type="success"
-            amount={totalAmount - totalPendingAmount}
-          />
-          <SpentCard
-            title={'Total Pending'}
-            type="danger"
-            amount={totalPendingAmount}
-          />
-        </div>
-        <div className={sty.expTitles}>
-          <p>
-            Expenses
-            <small>
-              {' '}
-              ({selectedList.filters.label ? selectedList.filters.label : 'All'}
-              )
-            </small>
-            {selectedList.filters.startDate && selectedList.filters.endDate ? (
-              <small>
-                From{' '}
-                <strong>{formatDate(selectedList.filters.startDate)}</strong> to{' '}
-                <strong>{formatDate(selectedList.filters.endDate)}</strong>
-              </small>
-            ) : (
-              <></>
-            )}
-          </p>
-        </div>
-        <div className={sty.exp}>
-          <DataRows head={true} />
-          {filteredExpenses.length > 0 ? (
-            <>
-              {filteredExpenses.map((data, index) => (
-                <DataRows
-                  key={index}
-                  data={data}
-                  index={index + 1}
-                  setData={setSelectedData}
-                  head={false}
-                />
-              ))}
-            </>
-          ) : (
-            <div className={sty.emptyList}>
-              <img src={noDollar} alt="" />
-              <p>Sorry! No Record Found</p>
-            </div>
-          )}
-        </div>
-        <div className={sty.mobileNav}>
-          {mobileState === 'home' ? (
-            <>
-              <div
-                className={sty.mobileItem}
-                onClick={() => setMobileState('library')}
-              >
-                <img src={library} alt="" />
-                <p>My Library</p>
-              </div>
-              <div
-                className={sty.mobileItem}
-                onClick={() => setMobileState('action')}
-              >
-                <img src={setting} alt="" />
-                <p>Action Center</p>
-              </div>
-            </>
-          ) : (
-            <div
-              className={sty.mobileItem}
-              onClick={() => setMobileState('home')}
-            >
-              <img src={close} alt="" />
-              <p>CLOSE</p>
-            </div>
-          )}
-        </div>
+      <div className={styles.addNewBtn}>
+        <button onClick={() => openModal('income')}>
+          <span> Add Income</span>
+        </button>
+        <button onClick={() => openModal('expenses')}>
+          <span> Add Expense</span>
+        </button>
       </div>
 
-      <Actionbar mobileState={mobileState} setMobileState={setMobileState} />
+      {(activeModal === 'income' || activeModal === 'expenses') && (
+        <TransactionModal
+          closeModal={closeModal}
+          filters={filters}
+          type={activeModal}
+          mId={data.summary.mId}
+        />
+      )}
     </div>
   );
 };
+
 export default Home;

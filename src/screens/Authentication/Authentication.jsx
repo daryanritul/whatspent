@@ -9,7 +9,7 @@ import {
   getAuthErrorMessage,
   validateEmail,
   validatePassword,
-} from '../../utils/utils';
+} from '../../utils/authentication';
 import { useNavigate } from 'react-router-dom';
 
 const Authentication = () => {
@@ -38,24 +38,20 @@ const Authentication = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // Reset any previous error messages
     setEmailError('');
     setPasswordError('');
     setConfirmPasswordError('');
 
-    // Validate email
     if (!validateEmail(email)) {
       setEmailError('Please enter a valid email address');
       return;
     }
 
-    // Validate password
     if (!validatePassword(password)) {
       setPasswordError('Password should be at least 6 characters long');
       return;
     }
 
-    // Compare passwords
     if (authSwitch && !comparePasswords(password, confirmPassword)) {
       setConfirmPasswordError('Passwords do not match');
       return;

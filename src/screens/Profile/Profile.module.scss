@@ -1,0 +1,337 @@
+@import '../../style/variables.scss';
+
+.profileContainer {
+  background-color: $natural-50;
+  padding: 1rem;
+  border-radius: 3px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 10px 10%;
+  margin-bottom: 60px;
+  overflow-y: auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.initials {
+  font-size: 60px;
+  background-color: $brand-600-main;
+  color: $brand-200;
+  border-radius: 3px;
+  width: 150px;
+  height: 150px;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.title {
+  font-size: 2rem;
+  color: $brand-600-main;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.email {
+  font-size: 1rem;
+  color: $natural-500;
+  padding: 3px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  .popupContent {
+    background-color: $natural-50;
+    padding: 20px;
+    border-radius: 3px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: $natural-600-main;
+      margin-bottom: 16px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      border: 1px solid $natural-300;
+      border-radius: 3px;
+      background-color: $natural-100;
+      color: $natural-900;
+
+      &:focus {
+        outline: none;
+        border-color: $brand-400;
+        background-color: $natural-50;
+      }
+    }
+
+    .saveBtn,
+    .cancelBtn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 3px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .saveBtn {
+      background-color: $brand-600-main;
+      color: $basic-white;
+
+      &:hover {
+        background-color: $brand-500;
+      }
+    }
+
+    &.cancelBtn {
+      background-color: $natural-500;
+      &:hover {
+        background-color: $natural-400;
+      }
+    }
+  }
+}
+.editNameBtn {
+  padding: 3px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: $brand-200;
+  color: $brand-900;
+  transition: background-color 0.3s, color 0.3s;
+  &:hover {
+    background-color: $brand-400;
+    color: $basic-white;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: $brand-500;
+    color: $basic-white;
+  }
+}
+
+.salaryCycle,
+.categories {
+  margin-top: 1rem;
+  display: flex;
+}
+.salaryCycle {
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  .input {
+    margin: 0;
+    width: 80px;
+    text-align: center;
+  }
+}
+h2 {
+  color: $brand-500;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  color: $brand-600-main;
+  padding-left: 5px;
+}
+
+.input {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid $natural-400;
+  border-radius: 3px;
+  color: $natural-900;
+}
+
+.categories {
+  flex-direction: column;
+  width: 100%;
+}
+.category {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  ul {
+    padding: 5px;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    li {
+      gap: 0.5rem;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+  }
+  h3 {
+    font-weight: bold;
+    font-size: 1rem;
+    color: $brand-600-main;
+    padding-left: 10px;
+  }
+  .input {
+    width: 100%;
+  }
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $natural-200;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  color: $natural-800;
+}
+
+.removeBtn {
+  color: $basic-white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  background: $status-danger-400;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: $status-danger-600;
+  }
+}
+
+.logoutBtn {
+  background-color: $status-danger-50;
+  color: $status-danger-600;
+  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  &:hover {
+    background-color: $status-danger-400;
+    color: $basic-white;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profileContainer {
+    padding: 1rem;
+    width: 100%;
+    margin: 0px;
+    padding-top: 30px;
+    border-radius: 0;
+    padding-bottom: 70px;
+    box-shadow: none;
+  }
+
+  .initials {
+    font-size: 3rem;
+    border-radius: 3px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .email {
+    font-size: 0.875rem;
+  }
+
+  .salaryCycle,
+  .categories {
+    flex-direction: row;
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .categories {
+    flex-direction: column;
+  }
+  .category {
+    width: 100%;
+  }
+
+  .category ul {
+    width: 100%;
+    li {
+      display: flex;
+      flex-direction: row;
+      margin: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .initials {
+    font-size: 2.5rem;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .email {
+    font-size: 0.75rem;
+  }
+
+  label {
+    .input {
+      width: 100px;
+      text-align: center;
+    }
+  }
+  .categories {
+    margin-top: 0.5rem;
+    flex-direction: column;
+  }
+
+  .listItem {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}

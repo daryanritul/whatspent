@@ -1,0 +1,98 @@
+@import '../../style/variables.scss';
+
+.card {
+  display: flex;
+  align-items: center;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  background: $basic-white;
+  height: 70px;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: $natural-300;
+  color: $natural-700;
+  padding: 5px;
+  margin-right: 15px;
+  font-weight: bold;
+  min-width: 60px;
+  border-radius: 3px;
+}
+.day {
+  font-size: 1.2rem;
+}
+.month {
+  font-size: 0.8rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.description {
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: $brand-600-main;
+}
+.category {
+  font-size: 0.9rem;
+  color: $natural-700;
+}
+
+.amount {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: $status-danger-600;
+}
+.income {
+  color: $status-success-600;
+}
+
+.card small {
+  display: flex;
+  flex: 1;
+  justify-content: end;
+  color: $natural-600-main;
+}
+
+.delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: $status-danger-600;
+  color: $basic-white;
+  padding: 5px;
+  margin: 0 3px;
+  font-weight: bold;
+  min-width: 50px;
+  border-radius: 3px;
+  height: max-content;
+  height: 100%;
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    display: none;
+  }
+}

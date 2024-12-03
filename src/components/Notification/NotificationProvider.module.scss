@@ -1,0 +1,44 @@
+@import '../../style/variables.scss';
+/* Notification.module.scss */
+.notification {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  padding: 10px 20px;
+  color: $basic-white;
+  border-radius: 3px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.notification.success {
+  background-color: $status-success-600;
+}
+
+.notification.error {
+  background-color: $status-danger-600;
+}
+
+.notification.info {
+  background-color: $brand-600-main;
+}
+
+.closeBtn {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}

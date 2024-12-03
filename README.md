@@ -34,7 +34,7 @@ Desktop
 - **Income Tracking**: Keep track of your income sources and monitor your cash flow.
 - **Budget Management**: Set and monitor budget limits for different expense categories.
 - **Filtering**: Filter your expenses based on date, category, or label to analyze spending habits.
-- **Import and Export**: Import and export your financial data in Excel format for easy sharing and backup.
+
 
 ## Getting Started
 
