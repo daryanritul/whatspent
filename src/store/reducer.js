@@ -60,24 +60,31 @@ export default (state, { type, payload }) => {
       const monthYear = Number(`${month}${year}`);
 
       if (listType === 'monthly') {
-        const updatedMonthlyData = state.financialData.monthlyData.map(item => {
-          if (item.mId === mId) {
-            return {
-              ...item,
-              planned: item.planned,
-              actual:
-                type === 'income' ? item.actual + amount : item.actual - amount,
-              income: type === 'income' ? item.income + amount : item.income,
-              expenses:
-                type === 'expenses' ? item.expenses + amount : item.expenses,
-            };
-          }
-          return item;
-        });
+        const updatedMonthlyData = state.financialData.monthlyData
+          ? state.financialData.monthlyData.map(item => {
+              if (item.mId === mId) {
+                return {
+                  ...item,
+                  planned: item.planned,
+                  actual:
+                    type === 'income'
+                      ? item.actual + amount
+                      : item.actual - amount,
+                  income:
+                    type === 'income' ? item.income + amount : item.income,
+                  expenses:
+                    type === 'expenses'
+                      ? item.expenses + amount
+                      : item.expenses,
+                };
+              }
+              return item;
+            })
+          : [];
 
-        const existingMonthData = state.financialData.monthlyData.find(
-          item => item.mId === mId
-        );
+        const existingMonthData =
+          state.financialData.monthlyData?.find(item => item.mId === mId) ||
+          null;
 
         if (!existingMonthData) {
           updatedMonthlyData.push({
