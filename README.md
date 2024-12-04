@@ -6,37 +6,52 @@
   </a>
 </p>
 
- 
-## Introduction
+## **Introduction**
 
-Whatspent is a web application built to help users manage their finances effectively. It allows users to track their expenses, income, and budgets, and provides various features to analyze and visualize their financial data.
+[Whatspent](https://whatspent.daryanritul.in) is a **personal finance management web application** designed to help users track, manage, and visualize their financial transactions. Whether you're managing personal finances, monitoring monthly budgets, or analyzing spending habits, Whatspent offers a clean, intuitive platform to manage everything in one place.
 
- [Whatspent : https://whatspent.daryanritul.in](https://whatspent.daryanritul.in) Website Link Here
+With features like income and expense tracking, budget management, and real-time balance updates, Whatspent allows users to gain a better understanding of their finances, plan their spending, and ensure their financial goals are met.
 
-## Screenshots
-Desktop
+---
 
- <img  width="100%" src="https://github.com/daryanritul/whatspent/assets/67550989/93b2acf1-41ad-42e0-91cc-e3ea09e23482">
+## **Key Features**
 
- Mobile
- <p align="center">
- <img  width="32%" src="https://github.com/daryanritul/whatspent/assets/67550989/39a14383-5d19-409a-81d1-649f3c2b9ec5">
+- **Income & Expense Tracking**: Track your daily income and expenses, with options to categorize each transaction for better visibility.
+- **Personal & Monthly Data Views**: Toggle between **Personal Lists** and **Monthly Data** to manage finances based on your preferences.
+- **Frequent Transactions**: Add frequently used transactions to your list and quickly add them with a single click.
+- **Budget Management**: Set budgets for various categories and monitor them to avoid overspending.
+- **Responsive Design**: Optimized for both mobile and desktop views, offering an enjoyable experience across all devices.
+---
 
- <img  width="32%" src="https://github.com/daryanritul/whatspent/assets/67550989/ff7b1eae-84a2-46f5-811c-57af974c1926">
+## **Tech Stack**
 
- <img  width="32%" src="https://github.com/daryanritul/whatspent/assets/67550989/2a1e27bb-e7e2-4a47-80de-239263dc4e38">
+### **Frontend**
+- **Languages:** HTML, CSS, SCSS, JavaScript
+- **Libraries/Frameworks:** React.js, React-Icons
+- **State Management:** Context API
+- **Design Tools:** Custom SCSS for dynamic and responsive styling
 
- <p>
+### **Backend**
+- **Database:** Firebase (for transaction storage)
+- **Logic:** Node.js, Firebase Realtime Database
+- **Other Tools:** Git for version control
 
-## Features
+---
 
-- **Expense Tracking**: Easily record your daily expenses and categorize them for better management.
-- **Income Tracking**: Keep track of your income sources and monitor your cash flow.
-- **Budget Management**: Set and monitor budget limits for different expense categories.
-- **Filtering**: Filter your expenses based on date, category, or label to analyze spending habits.
+## **Screenshots**
 
+- **Dashboard Overview**:  
+  *(Insert screenshot of the dashboard view with transactions and balance)*
 
-## Getting Started
+- **Add Transaction**:  
+  *(Insert screenshot of the transaction addition form)*
+
+- **Frequent Transactions**:  
+  *(Insert screenshot of the Frequent transactions section)*
+
+---
+
+## **Getting Started**
 
 ### Prerequisites
 
