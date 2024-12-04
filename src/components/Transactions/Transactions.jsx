@@ -1,12 +1,12 @@
 import React, { useContext, useMemo } from 'react';
-import styles from './TransactionTable.module.scss';
+import styles from './Transactions.module.scss';
 import TransectionCard from '../TransectionCard/TransectionCard';
-import { MdDelete, MdEdit } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 import { context } from '../../store/store';
 import { deleteTransaction } from '../../store/actions';
 import { calculateBalances } from '../../utils/transection';
 
-const TransactionTable = ({ transactionList, mId, pId, pList }) => {
+const Transactions = ({ transactionList, mId, pId, pList }) => {
   const { dispatch } = useContext(context);
 
   const transactions = useMemo(
@@ -24,6 +24,7 @@ const TransactionTable = ({ transactionList, mId, pId, pList }) => {
         <h4>Transactions</h4>
         <p>{pList}</p>
       </div>
+
       {transactionList?.length > 0 ? (
         <>
           <table className={styles.transactionTable}>
@@ -39,10 +40,7 @@ const TransactionTable = ({ transactionList, mId, pId, pList }) => {
             </thead>
             <tbody>
               {transactions.map((transaction, index) => (
-                <tr
-                  key={`transaction-${index}`}
-                  className={styles.transactionRow}
-                >
+                <tr key={index} className={styles.transactionRow}>
                   <td className={styles.dateCell}>
                     {new Date(transaction.date).toLocaleDateString('en-GB', {
                       day: '2-digit',
@@ -65,7 +63,7 @@ const TransactionTable = ({ transactionList, mId, pId, pList }) => {
                     ₹ {transaction.amount.toLocaleString()}
                   </td>
                   <td className={styles.balanceCell}>
-                    ₹ {transaction.newBal.toLocaleString() || '0'}
+                    ₹ {transaction.newBal?.toLocaleString() || '0'}
                   </td>
                   <td className={styles.deleteCell}>
                     <MdDelete
@@ -77,29 +75,22 @@ const TransactionTable = ({ transactionList, mId, pId, pList }) => {
               ))}
             </tbody>
           </table>
+
           {transactions.map((transaction, index) => (
             <TransectionCard
-              date={new Date(transaction.date).getDate()}
-              month={new Date(transaction.date).toLocaleString('en-US', {
-                month: 'short',
-              })}
-              description={transaction.description}
-              category={transaction.category}
-              amount={transaction.amount}
-              type={transaction.type}
-              newBal={transaction.newBal}
-              uuid={transaction.uuid}
+              key={transaction.uuid || index}
+              transaction={transaction}
               handleDeleteTransection={handleDeleteTransection}
             />
           ))}
         </>
       ) : (
         <div className={styles.emptyList}>
-          <p>There are no transactions yet. Start by adding some data!</p>
+          <p>There are no transactions yet. Start by adding some!</p>
         </div>
       )}
     </div>
   );
 };
 
-export default TransactionTable;
+export default Transactions;

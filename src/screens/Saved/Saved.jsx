@@ -99,7 +99,7 @@ const Saved = () => {
           </>
         ) : (
           <div className={styles.emptyList}>
-            <p>There are no transactions yet. Start by adding some data!</p>
+            <p>There are no transactions yet. Start by adding some!</p>
           </div>
         )}
       </div>
