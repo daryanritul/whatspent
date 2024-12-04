@@ -12,7 +12,7 @@ export const filterFinancialData = (financialData, filters) => {
       );
     });
 
-    const summary = financialData.monthlyData.find(
+    const summary = financialData.monthlyData?.find(
       data => data.monthYear === monthYearFilter
     ) || {
       income: 0,
