@@ -107,16 +107,24 @@ const TransactionModal = ({ closeModal, mId, filters, type }) => {
             })
           }
           className={styles.input}
-          min={`${filters.year}-${String(filters.month).padStart(
-            2,
-            '0'
-          )}-01T00:00`}
-          max={`${filters.year}-${String(filters.month).padStart(
-            2,
-            '0'
-          )}-${String(
-            new Date(filters.year, filters.month, 0).getDate()
-          ).padStart(2, '0')}T23:59`}
+          min={
+            filters.listType === 'personal'
+              ? undefined
+              : `${filters.year}-${String(filters.month).padStart(
+                  2,
+                  '0'
+                )}-01T00:00`
+          }
+          max={
+            filters.listType === 'personal'
+              ? undefined
+              : `${filters.year}-${String(filters.month).padStart(
+                  2,
+                  '0'
+                )}-${String(
+                  new Date(filters.year, filters.month, 0).getDate()
+                ).padStart(2, '0')}T23:59`
+          }
         />
 
         <select

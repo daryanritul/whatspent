@@ -116,7 +116,7 @@ export default (state, { type, payload }) => {
                 income: type === 'income' ? list.income + amount : list.income,
                 expenses:
                   type === 'expenses' ? list.expenses + amount : list.expenses,
-                transactions: [...list.transactions, transection],
+                transactions: [...(list.transactions || []), transection],
               };
             }
             return list;

@@ -28,9 +28,9 @@ const TransectionCard = ({ transaction, handleDeleteTransection }) => {
               : `${styles.amount}`
           }
         >
-          ₹ {transaction.amount.toLocaleString()}
+          ₹ {transaction.amount?.toLocaleString('en-IN')}
         </div>
-        <small>₹ {transaction.newBal.toLocaleString()}</small>
+        <small>₹ {transaction.newBal?.toLocaleString('en-IN')}</small>
       </span>
       {toggleDelete && (
         <span

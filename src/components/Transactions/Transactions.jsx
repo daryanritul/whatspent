@@ -60,10 +60,10 @@ const Transactions = ({ transactionList, mId, pId, pList }) => {
                         : styles.expenseActivity
                     }
                   >
-                    ₹ {transaction.amount.toLocaleString()}
+                    ₹ {transaction.amount?.toLocaleString('en-IN')}
                   </td>
                   <td className={styles.balanceCell}>
-                    ₹ {transaction.newBal?.toLocaleString() || '0'}
+                    ₹ {transaction.newBal?.toLocaleString('en-IN') || '0'}
                   </td>
                   <td className={styles.deleteCell}>
                     <MdDelete
